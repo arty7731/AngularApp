@@ -18,8 +18,8 @@ export class PostsService {
     return this.http.get<PostModel>(`${this.baseUrl}/${id}`)
   }
 
-  getPosts(): Observable<PostModel[]> {
-    return this.http.get<PostModel[]>(`${this.baseUrl}?_sort=views&_order=desc`)
+  getUserPosts(userId: number): Observable<PostModel[]> {
+    return this.http.get<PostModel[]>(`${this.baseUrl}?userId=${userId}&_sort=views&_order=desc`)
   }
 
   addPost(post: PostModel): Observable<PostModel> {

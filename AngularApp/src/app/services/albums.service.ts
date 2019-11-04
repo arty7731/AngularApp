@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { AlbumModel } from '../models/album.model';
 import { Observable } from 'rxjs';
 
@@ -10,7 +10,7 @@ export class AlbumsService {
     
   }
 
-  getAlbums(): Observable<AlbumModel[]>{
-    return this.http.get<AlbumModel[]>(this.baseUrl)
+  getUserAlbums(userId: number): Observable<AlbumModel[]>{
+    return this.http.get<AlbumModel[]>(`${this.baseUrl}?userId=${userId}`)
   }
 }

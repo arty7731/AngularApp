@@ -1,0 +1,18 @@
+<div *ngIf='user'>
+    <h2>User Info</h2>
+    <div>
+        <p>User ID: {{user.id}}</p>
+        <p>Username: {{user.username}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>Phone: {{user.phone}}</p>
+        <p>Website: {{user.website}}</p>
+        <p>Compny Name: {{user.company.name}}</p>
+        <p>Address: {{user.address.city}}, {{user.address.street}}, {{user.address.zipcode}}</p>
+        <hr/>
+    </div>
+    <h2>Albums</h2>
+    <app-albums [userId]='user.id'></app-albums>
+    <h2>Posts</h2>
+    <app-posts  [userId]='user.id'></app-posts>
+
+</div>
