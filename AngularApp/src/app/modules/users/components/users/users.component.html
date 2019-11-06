@@ -1,7 +1,17 @@
-<div *ngFor='let user of users'>
-    <p>Id: {{user.id}}</p>
-    <p>Username: {{user.username}}</p>
-    <p>Email: {{user.email}}</p>
-    <button [routerLink]="[user.id, 'user']" >Info</button>
-    <hr/>
+<div class='container'>
+    <div class='row'>
+        <div class='col-4'>
+            <div *ngFor='let user of users'>
+                <p>Id: {{user.id}}</p>
+                <p>Username: {{user.username}}</p>
+                <p>Email: {{user.email}}</p>
+                <button [routerLink]='["user", user.id]' >Info</button>
+                <hr/>
+            </div>
+        </div>
+        <div class='col-8'>
+            <router-outlet></router-outlet>
+            <app-info-user [userId]='selectedUserId'></app-info-user>
+        </div>
+    </div>
 </div>

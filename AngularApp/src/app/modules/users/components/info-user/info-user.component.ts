@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserModel } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
@@ -10,18 +10,25 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class InfoUserComponent implements OnInit {
 
-  id: number;
+  @Input() userId: number
   user: UserModel
 
   constructor(private activateRoute: ActivatedRoute,
     private userService: UsersService) { }
 
-  ngOnInit() {
-    this.id = this.activateRoute.snapshot.params['id']
-    
-    this.userService.getUser(this.id)
-      .subscribe(user => this.user = user);
+  ngOnInit() {   
+    this.userId = this.activateRoute.snapshot.params["id"];
+    if(this.userId){
+      this.userService.getUser(this.userId)
+        .subscribe(user => this.user = user);
+    }
   }
 
-
+  ngOnChanges(): void {
+    console.log('changes')
+    if(this.userId){
+      this.userService.getUser(this.userId)
+        .subscribe(user => this.user = user);
+    }
+  }
 }

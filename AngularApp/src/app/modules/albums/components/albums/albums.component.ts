@@ -15,7 +15,11 @@ export class AlbumsComponent implements OnInit {
   constructor(private albumService: AlbumsService) { }
 
   ngOnInit() {
-    this.albumService.getUserAlbums(this.userId).subscribe(albums => this.albums = albums)
   }
 
+  ngOnChanges(): void {
+    if(this.userId){
+      this.albumService.getUserAlbums(this.userId).subscribe(albums => this.albums = albums)
+    }
+  }
 }

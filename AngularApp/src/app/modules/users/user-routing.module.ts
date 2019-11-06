@@ -6,7 +6,11 @@ import { InfoUserComponent } from './components/info-user/info-user.component';
 
 const routes: Routes = [
   { path: '', component: UsersComponent },
-  { path: ':id/user', component: InfoUserComponent }
+  { path: 'user/:id', component: InfoUserComponent },
+  { path: 'user/:id/posts',
+      loadChildren: () => import('../posts/post.module').then(m => m.PostModule) },
+  { path: 'user/:id/albums',
+    loadChildren: () => import('../albums/album.module').then(m => m.AlbumModule) }
 ];
 
 @NgModule({
