@@ -5,13 +5,12 @@
                 <p>Id: {{user.id}}</p>
                 <p>Username: {{user.username}}</p>
                 <p>Email: {{user.email}}</p>
-                <button [routerLink]='["user", user.id]' >Info</button>
+                <button [routerLink]='["user", user.id]'>Info</button>
                 <hr/>
             </div>
         </div>
         <div class='col-8'>
             <router-outlet></router-outlet>
-            <app-info-user [userId]='selectedUserId'></app-info-user>
         </div>
     </div>
 </div>

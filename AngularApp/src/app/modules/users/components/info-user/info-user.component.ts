@@ -14,18 +14,17 @@ export class InfoUserComponent implements OnInit {
   user: UserModel
 
   constructor(private activateRoute: ActivatedRoute,
-    private userService: UsersService) { }
+    private userService: UsersService) { 
+      
+    }
 
   ngOnInit() {   
-    this.userId = this.activateRoute.snapshot.params["id"];
-    if(this.userId){
-      this.userService.getUser(this.userId)
-        .subscribe(user => this.user = user);
-    }
+    this.activateRoute.params.subscribe(params => { 
+      this.userId = params.id; 
+      this.onChangeUser()});
   }
 
-  ngOnChanges(): void {
-    console.log('changes')
+  onChangeUser(){
     if(this.userId){
       this.userService.getUser(this.userId)
         .subscribe(user => this.user = user);

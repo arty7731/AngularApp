@@ -5,8 +5,9 @@ import { InfoUserComponent } from './components/info-user/info-user.component';
 
 
 const routes: Routes = [
-  { path: '', component: UsersComponent },
-  { path: 'user/:id', component: InfoUserComponent },
+  { path: '', component: UsersComponent, children: [
+    { path: 'user/:id', component: InfoUserComponent}
+  ] },
   { path: 'user/:id/posts',
       loadChildren: () => import('../posts/post.module').then(m => m.PostModule) },
   { path: 'user/:id/albums',
